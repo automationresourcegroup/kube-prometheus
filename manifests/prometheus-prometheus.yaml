@@ -12,8 +12,6 @@ spec:
       namespace: monitoring
       port: web
   image: grafanpoc.azurecr.io/monitoring/prometheus:v2.22.1
-  imagePullSecrets:
-    - name: grafana-secret
   nodeSelector:
     kubernetes.io/os: linux
   podMonitorNamespaceSelector: {}
@@ -33,6 +31,8 @@ spec:
     runAsNonRoot: true
     runAsUser: 1000
   serviceAccountName: prometheus-k8s
+  imagePullSecrets:
+    - name: grafana-secret
   serviceMonitorNamespaceSelector: {}
   serviceMonitorSelector: {}
   version: v2.22.1

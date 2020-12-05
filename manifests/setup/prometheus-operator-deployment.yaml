@@ -27,8 +27,6 @@ spec:
         - --prometheus-config-reloader=quay.io/prometheus-operator/prometheus-config-reloader:v0.43.2
         image: grafanpoc.azurecr.io/monitoring/prometheus-operator:v0.43.2
         name: prometheus-operator
-      imagePullSecrets:
-        - name: grafana-secret
         ports:
         - containerPort: 8080
           name: http
@@ -61,3 +59,5 @@ spec:
         runAsNonRoot: true
         runAsUser: 65534
       serviceAccountName: prometheus-operator
+      imagePullSecrets:
+        - name: grafana-secret

@@ -21,8 +21,6 @@ spec:
       - env: []
         image: grafanpoc.azurecr.io/monitoring/grafana:7.3.4
         name: grafana
-      imagePullSecrets:
-        - name: grafana-secret
         ports:
         - containerPort: 3000
           name: http
@@ -123,6 +121,8 @@ spec:
         runAsNonRoot: true
         runAsUser: 65534
       serviceAccountName: grafana
+      imagePullSecrets:
+        - name: grafana-secret
       volumes:
       - emptyDir: {}
         name: grafana-storage

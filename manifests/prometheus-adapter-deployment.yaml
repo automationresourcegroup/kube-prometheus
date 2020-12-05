@@ -27,8 +27,6 @@ spec:
         - --secure-port=6443
         image: grafanpoc.azurecr.io/monitoring/k8s-prometheus-adapter:v0.8.2
         name: prometheus-adapter
-      imagePullSecrets:
-        - name: grafana-secret
         ports:
         - containerPort: 6443
         volumeMounts:
@@ -44,6 +42,8 @@ spec:
       nodeSelector:
         kubernetes.io/os: linux
       serviceAccountName: prometheus-adapter
+      imagePullSecrets:
+        - name: grafana-secret
       volumes:
       - emptyDir: {}
         name: tmpfs
