@@ -25,8 +25,10 @@ spec:
         - --no-collector.wifi
         - --no-collector.hwmon
         - --collector.filesystem.ignored-mount-points=^/(dev|proc|sys|var/lib/docker/.+|var/lib/kubelet/pods/.+)($|/)
-        image: quay.io/prometheus/node-exporter:v1.0.1
+        image: grafanpoc.azurecr.io/monitoring/node-exporter:v1.0.1
         name: node-exporter
+      imagePullSecrets:
+        - name: grafana-secret
         resources:
           limits:
             cpu: 250m
@@ -57,7 +59,7 @@ spec:
           valueFrom:
             fieldRef:
               fieldPath: status.podIP
-        image: quay.io/brancz/kube-rbac-proxy:v0.8.0
+          image: grafanpoc.azurecr.io/monitoring/kube-rbac-proxy:v0.8.0
         name: kube-rbac-proxy
         ports:
         - containerPort: 9100

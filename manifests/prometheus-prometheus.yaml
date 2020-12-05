@@ -11,7 +11,9 @@ spec:
     - name: alertmanager-main
       namespace: monitoring
       port: web
-  image: quay.io/prometheus/prometheus:v2.22.1
+  image: grafanpoc.azurecr.io/monitoring/prometheus:v2.22.1
+  imagePullSecrets:
+    - name: grafana-secret
   nodeSelector:
     kubernetes.io/os: linux
   podMonitorNamespaceSelector: {}
