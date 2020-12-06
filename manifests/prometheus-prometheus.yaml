@@ -14,10 +14,6 @@ spec:
   image: grafanpoc.azurecr.io/monitoring/prometheus:v2.22.1
   nodeSelector:
     kubernetes.io/os: linux
-  podMonitorNamespaceSelector: {}
-  podMonitorSelector: {}
-  probeNamespaceSelector: {}
-  probeSelector: {}
   replicas: 2
   resources:
     requests:
@@ -33,6 +29,4 @@ spec:
   serviceAccountName: prometheus-k8s
   imagePullSecrets:
     - name: grafana-secret
-  serviceMonitorNamespaceSelector: {}
-  serviceMonitorSelector: {}
   version: v2.22.1
